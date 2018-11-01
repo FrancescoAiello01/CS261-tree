@@ -22,6 +22,10 @@ class TestBinarySearchTree(unittest.TestCase):
         bst = BinarySearchTree("FAKE")
         self.assertEqual(test_value, bst.value)
 
+    def test_has_left_and_right_initially_none(self):
+        bst = BinarySearchTree()
+        self.assertEqual(None, bst.left)
+        self.assertEqual(None, bst.right)
 
 if __name__ == '__main__':
     unittest.main()
