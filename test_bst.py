@@ -1,9 +1,21 @@
+# Run me with 'python -m unittest test_bst'
+
 import unittest
+from bst import BinarySearchTree
 
-class TestTree(unittest.TestCase):
+class TestBinarySearchTree(unittest.TestCase):
+    """
+    Initialization
+    """
 
-    def test_failure(self):
-        self.fail("intentional failure")
+    def test_instantiation(self):
+        """
+        A BinarySearchTree exists
+        """
+        try:
+            BinarySearchTree()
+        except NameError:
+            self.fail("Could not instantiate BinarySearchTree")
 
 
 if __name__ == '__main__':
