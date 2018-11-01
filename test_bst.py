@@ -17,6 +17,11 @@ class TestBinarySearchTree(unittest.TestCase):
         except NameError:
             self.fail("Could not instantiate BinarySearchTree")
 
+    def test_instantiation_with_value(self):
+        test_value = "FAKE"
+        bst = BinarySearchTree("FAKE")
+        self.assertEqual(test_value, bst.value)
+
 
 if __name__ == '__main__':
     unittest.main()
