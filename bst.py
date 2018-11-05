@@ -5,14 +5,26 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
-    def insert(self, root, child):
-        if root.value > child.value:
-            if root.left == None:
-                root.left = child
+    def insert(self, child):
+        if self.value > child.value:
+            if self.left == None:
+                self.left = child
             else:
-                root.insert(root.left, child)
-        elif root.value <= child.value:
-            if root.right == None:
-                root.right = child
+                self.left.insert(child)
+        else:
+            if self.right == None:
+                self.right = child
             else:
-                root.insert(root.right, child)
+                self.right.insert(child)
+
+    def find(self, searchee):
+        if searchee == self.value:
+            return True
+        if self.value > searchee:
+            if self.left is None:
+                return False
+            return self.left.find(searchee)
+        else:
+            if self.right is None:
+                return False
+            return self.right.find(searchee)

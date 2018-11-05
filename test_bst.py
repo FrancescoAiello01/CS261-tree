@@ -33,7 +33,7 @@ class TestBinarySearchTree(unittest.TestCase):
     def test_insertion_smaller_values_as_left(self):
         bst = BinarySearchTree(50)
         child = BinarySearchTree(25)
-        bst.insert(bst, child)
+        bst.insert(child)
         self.assertEqual(child, bst.left)
 
     """
@@ -45,14 +45,36 @@ class TestBinarySearchTree(unittest.TestCase):
         child_two = BinarySearchTree(61)
         child_three = BinarySearchTree(39)
         child_four = BinarySearchTree(30)
-        bst.insert(bst, child)
-        bst.insert(bst, child_two)
-        bst.insert(bst, child_three)
-        bst.insert(bst, child_four)
+        bst.insert(child)
+        bst.insert(child_two)
+        bst.insert(child_three)
+        bst.insert(child_four)
         self.assertEqual(child, bst.right)
         self.assertEqual(child_two, child.right)
         self.assertEqual(child_three, bst.left)
         self.assertEqual(child_four, child_three.left)
+
+    """
+    Find value in tree with four leaf nodes
+    """
+    def test_find_value_in_tree_with_four_leaf_nodes(self):
+        searchee = 53
+        bst = BinarySearchTree(50)
+        child = BinarySearchTree(56)
+        child_two = BinarySearchTree(61)
+        child_three = BinarySearchTree(53)
+        child_four = BinarySearchTree(30)
+        child_five = BinarySearchTree(26)
+        child_six = BinarySearchTree(31)
+        bst.insert(child)
+        bst.insert(child_two)
+        bst.insert(child_three)
+        bst.insert(child_four)
+        bst.insert(child_five)
+        bst.insert(child_six)
+        self.assertEqual(True, bst.find(searchee))
+        self.assertEqual(False, bst.find(1))
+
 
 
 if __name__ == '__main__':
