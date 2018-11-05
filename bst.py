@@ -28,3 +28,10 @@ class BinarySearchTree:
             if self.right is None:
                 return False
             return self.right.find(searchee)
+
+    def in_order_traversal(self, callback):
+        if self.left is not None:
+            self.left.in_order_traversal(callback)
+        callback(self.value)
+        if self.right is not None:
+            self.right.in_order_traversal(callback)

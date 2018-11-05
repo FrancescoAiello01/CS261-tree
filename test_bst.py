@@ -75,6 +75,19 @@ class TestBinarySearchTree(unittest.TestCase):
         self.assertEqual(True, bst.find(searchee))
         self.assertEqual(False, bst.find(1))
 
+    """
+    In-order traversal test
+    """
+    def test_in_order_traversal(self):
+        bst = BinarySearchTree(50)
+        for i in range(5, 80, 10):
+            bst.insert(BinarySearchTree(i))
+        expected_list = [5, 15, 25, 35, 45, 50, 55, 65, 75]
+        observed_list = []
+        bst.in_order_traversal(lambda value: observed_list.append(value))
+        self.assertEqual(expected_list, observed_list)
+
+
 
 
 if __name__ == '__main__':
