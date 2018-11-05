@@ -111,8 +111,37 @@ class TestBinarySearchTree(unittest.TestCase):
         bst.post_order_traversal(lambda value: observed_list.append(value))
         self.assertEqual(expected_list, observed_list)
 
+    """
+    Delete function test
+    """
+    def test_delete_function(self):
+        bst = BinarySearchTree(50)
+        for i in range(5, 80, 10):
+            bst.insert(BinarySearchTree(i))
+        bst.delete(5)
+        self.assertEqual(bst.left.value, 15)
 
+    """
+    Delete with two children
+    """
+    def test_delete_function_with_two_children(self):
+        bst = BinarySearchTree(25)
+        nodes = [15,50,10,22,35,70,4,12,18,24,31,44,66,90]
+        for val in nodes:
+            bst.insert(BinarySearchTree(val))
+        self.assertEqual(bst.find(50), True)
+        bst.delete(50)
+        self.assertEqual(bst.find(50), False)
 
+    """
+    Delete a value not in the tree
+    """
+    def test_delete_value_not_in_tree(self):
+         bst = BinarySearchTree(25)
+         nodes = [15,50,10,22,35,70,4,12,18,24,31,44,66,90]
+         for val in nodes:
+             bst.insert(BinarySearchTree(val))
+         bst.delete(500)
 
 if __name__ == '__main__':
     unittest.main()

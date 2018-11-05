@@ -49,3 +49,34 @@ class BinarySearchTree:
         if self.right is not None:
             self.right.post_order_traversal(callback)
         callback(self.value)
+
+    def delete(self, deletee):
+        if self.right is not None and self.right.value == deletee:
+            if self.right.left is None:
+                self.right = self.right.right
+            elif self.right.right is None:
+                self.right = self.right.left
+            else:
+                successor = self.right.right
+                while successor.left is not None:
+                    successor = successor.left
+                self.right.delete(successor.value)
+                self.right.value = successor.value
+        elif self.left is not None and self.left.value == deletee:
+            if self.left.right is None:
+                self.left = self.left.left
+            elif self.left.left is None:
+                self.left = self.left.right
+            else:
+                successor = self.left.left
+                while successor.right is not None:
+                    successor = successor.right
+                self.left.delete(successor.value)
+                self.left.value = successor.value
+        else:
+            if deletee > self.value:
+                if self.right is not None:
+                    self.right.delete(deletee)
+            else:
+                if self.left is not None:
+                    self.left.delete(deletee)
