@@ -35,3 +35,10 @@ class BinarySearchTree:
         callback(self.value)
         if self.right is not None:
             self.right.in_order_traversal(callback)
+
+    def pre_order_traversal(self, callback):
+        callback(self.value)
+        if self.left is not None:
+            self.left.pre_order_traversal(callback)
+        if self.right is not None:
+            self.right.pre_order_traversal(callback)

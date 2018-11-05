@@ -87,6 +87,18 @@ class TestBinarySearchTree(unittest.TestCase):
         bst.in_order_traversal(lambda value: observed_list.append(value))
         self.assertEqual(expected_list, observed_list)
 
+    """
+    Pre-order traversal test
+    """
+    def test_pre_order_traversal(self):
+        bst = BinarySearchTree(50)
+        for i in range(5, 80, 10):
+            bst.insert(BinarySearchTree(i))
+        expected_list = [50, 5, 15, 25, 35, 45, 55, 65, 75]
+        observed_list = []
+        bst.pre_order_traversal(lambda value: observed_list.append(value))
+        self.assertEqual(expected_list, observed_list)
+
 
 
 
